@@ -1,4 +1,4 @@
-import collections
+from collections.abc import Sequence, Mapping
 import json
 import os
 
@@ -7,7 +7,7 @@ from jinja2 import Environment, FileSystemLoader
 from EasyEuler import paths
 
 
-class ProblemList(collections.Sequence):
+class ProblemList(Sequence):
     def __init__(self, problems):
         self._problems = problems
 
@@ -25,7 +25,7 @@ class ProblemList(collections.Sequence):
         return len(self._problems)
 
 
-class ConfigurationDictionary(collections.Mapping):
+class ConfigurationDictionary(Mapping):
     def __init__(self, configs):
         self._config = {}
 
@@ -34,7 +34,7 @@ class ConfigurationDictionary(collections.Mapping):
 
     def _update(self, config, updates):
         for key, value in updates.items():
-            if isinstance(value, collections.Mapping):
+            if isinstance(value, Mapping):
                 updated = self._update(config.get(key, {}), value)
                 config[key] = updated
             else:
