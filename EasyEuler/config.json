@@ -36,6 +36,13 @@
             "build": "g++ -o {path}.out {path}",
             "execute": "./{path}.out",
             "cleanup": "rm {path}.out"
+        },
+        "rust": {
+          "extension": "rs",
+          "template": "rust",
+          "build": "rustc {path} -o {path}.out",
+          "execute": "./{path}.out",
+          "cleanup": "rm {path}.out"
         }
     }
 }
